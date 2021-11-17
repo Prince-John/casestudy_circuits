@@ -1,10 +1,9 @@
 %% Part 1 RC Circuit Simulation.
-
+R = 1e3;% Resistance
+C = 1e-6;% Capacitance
 t0= 0; %Start Time in seconds 
 tf= 6*R*C; %End Time in seconds
 h = 0.0001;% time step in seconds
-R = 1e3;% Resistance
-C = 1e-6;% Capacitance
 V_in_0 = 1; 
 V_C_0 = 0;
 
