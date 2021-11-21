@@ -2,7 +2,7 @@
 R = 1e3;% Resistance
 C = 1e-6;% Capacitance
 t0= 0; %Start Time in seconds 
-tf= 6*R*C; %End Time in seconds
+tf= 5*R*C; %End Time in seconds
 h = 0.0001;% time step in seconds
 V_in_0 = 1; 
 V_C_0 = 0;
@@ -24,17 +24,10 @@ a = 1-b;
 % transformation matrix 
 % Keeping all voltages in a Voltage vector V, here we only have 2 voltages,
 % V_in and V_C; V = (V_C; V_in)
-
-
-
 V = [V_C; V_in];
 A = [a b];
-
-
 for i = 2:length(t)
-
     V(1,i) = A*V(:,i-1);
-
 end
 
 %% Plotting and Analysis
