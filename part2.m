@@ -30,6 +30,7 @@ container = [I_L; V_L ;V_in];
 
 
 %%
+
 A = [c b]; 
 current_matix = [(-1*R) 1];
 for j = 2:length(t)
@@ -39,6 +40,7 @@ end
 
 
 %%
+
 figure();
 plot(t, container([2 3],:));
 title('Inductance vs Time with constant V_{in} = 1V');
