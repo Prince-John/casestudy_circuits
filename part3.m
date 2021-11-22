@@ -157,6 +157,35 @@ xlabel('time (s)');
 % The decaying signal decreased in loudness with time. 
 
 
+%% Part 3-3
+% Redefining RLC parameters and overwriting V_in time series. 
+R = 100;
+L = 100e-3;
+C = 0.1e-6;
+f = 500;
+frequencies = decade(1,4,0.5);
+frequency_response = [frequencies' zeros(length(frequencies),1)];
+index = 1;
+for f = frequencies
+    V_in = sin(2*pi*f*t);
+    V_out = simV_R(R,L,C,V_in,t);
+    ratio = norm(V_out)/norm(V_in);
+    frequency_response(index, 2) = ratio;
+    index = index +1;
+end
 
+% Using a frequency vs ratio plot to see circuit response based on input
+% frequency.
 
+figure();
+semilogx(frequency_response(:,1), frequency_response(:,2));
+title('|V_{out}|/|V_{in}| vs frequency of V_{in}');
+ylabel('|V_{out}|/|V_{in}|');
+xlabel('Frequency(Hz)');
 
+% This shows that the circuit is a band pass type filter, which lets
+% maximum Vout around 1500 Hz and then the V_out average amplitude goes
+% down. 
+
+% Using norm to find the average amplitude of the time series. Since each
+% value represents a voltage at a
