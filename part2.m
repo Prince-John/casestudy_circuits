@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 %% Part 2 RL Circuit Simulation.
 
 t0= 0; %Start Time in seconds 
@@ -48,7 +47,6 @@ title('Inductance vs Time with constant V_{in} = 1V');
 legend('V_L','V_{in}');
 ylabel('Voltage (V)');
 xlabel('Time (s)');
-=======
 %% Part 2: RL circuit Simulation
 
 t0= 0; %Start Time in seconds 
@@ -100,5 +98,3 @@ function current = RL_simulation(A, container)
     end
     current = container;
 end
->>>>>>> Stashed changes
-
