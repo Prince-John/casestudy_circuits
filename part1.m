@@ -28,19 +28,12 @@ a = 1-b;
 % transformation matrix 
 % Keeping all voltages in a Voltage vector V, here we only have 2 voltages,
 % V_in and V_C; V = (V_C; V_in)
-
-
-
 V = [V_C; V_in];
 A = [a b];
-
-
 for i = 2:length(t)
-
     V(1,i) = A*V(:,i-1);
-
 end
-
+save ('container_values', 'V','t', '-append');
 %% Plotting and Analysis
 
 % *Task 1.2 - 1* 
