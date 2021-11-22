@@ -2,7 +2,7 @@
 R = 1e3;% Resistance
 C = 1e-6;% Capacitance
 t0= 0; %Start Time in seconds 
-tf= 5*R*C; %End Time in seconds
+tf= 6*R*C; %End Time in seconds
 h = 0.0001;% time step in seconds
 V_in_0 = 1; 
 V_C_0 = 0;
@@ -29,7 +29,7 @@ A = [a b];
 for i = 2:length(t)
     V(1,i) = A*V(:,i-1);
 end
-
+save ('container_values', 'V','t', '-append');
 %% Plotting and Analysis
 
 % *Task 1.2 - 1* 

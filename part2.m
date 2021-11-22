@@ -4,7 +4,7 @@ t0= 0; %Start Time in seconds
 h = 0.0001;% time step in seconds
 R = 1e2;% Resistance
 L = 0.1;%induction
-tf= 0.005; %End Time in seconds
+tf= 0.006; %End Time in seconds
 tL = linspace(t0,tf,((tf-t0)/h) +1);
 V_in_0 = 1;
 V_L_0 = V_in_0; % at time zero the current is zero and no voltage is dropped across the resistor.
@@ -36,8 +36,8 @@ for j = 2:length(tL)
 container(1,j) =  A*container([1 3], j-1);
 container(2,j) = current_matix*container([1 3], j); % Calculates the voltage, V_L = V_I - V_R; V_R = RI
 end
-
-
+%DND..USED FOR PART2_2
+save ('container_values', 'container', '-append');
 %%
 figure();
 plot(tL, container([2 3],:));
