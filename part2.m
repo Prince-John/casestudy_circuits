@@ -29,6 +29,7 @@ c = 1-a;
 container = [I_L; V_L ;V_in];    
 
 %%
+
 A = [c b]; 
 current_matix = [(-1*R) 1];
 for j = 2:length(t)
@@ -38,12 +39,28 @@ end
 
 
 %%
+
 figure();
 plot(t, container([2 3],:));
 title('Inductance vs Time with constant V_{in} = 1V');
 legend('V_L','V_{in}');
 ylabel('Voltage (V)');
 xlabel('Time (s)');
+%% Part 2: RL circuit Simulation
+
+t0= 0; %Start Time in seconds 
+R = 1e3;% Resistance
+L = 1e-1;% Inductance
+tf= 0.005; %End Time in seconds
+h = 0.00001;% time step in seconds
+V_in_0 = 1; 
+V_L_0 = 0;
+
+% Time Series
+t = linspace(t0,tf,((tf-t0)/h) +1);
+V_L_in = V_in_0*ones(1,length(t)) ; % input voltage source
+i_k = zeros(1, length(t));
+% V_C(1,1) = V_C_0;
 
 %% Complementart relationship
 % This function return a plot to depict the complementary relationship
