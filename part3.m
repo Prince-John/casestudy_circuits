@@ -2,9 +2,9 @@
 R = 100;% Resistance
 C = 1e-6;% Capacitance
 L = 10e-3;% Inductance
+h = 1/(192e3);% time step in seconds
 t0= 100*h; %Start Time in seconds 
 tf= 0.015; %End Time in seconds
-h = 1/(192e3);% time step in seconds
 V_in_0 = 1; 
 V_C_0 = 0;
 I_L_0 = 0;
@@ -48,7 +48,7 @@ xlabel('Time (s)')
 
 %% Exploring VR out with differnt values of RLC,
 
-% using a decade function found online to genrate log scale component test
+% using a decade function found online to generate log scale component test
 % values.
 
 R_Values = decade(2,3,0.5);
@@ -155,6 +155,42 @@ xlabel('time (s)');
 % The sustained signal had a uniform loudness and played a constant note.
 % The growing signal increased in loudness with time.
 % The decaying signal decreased in loudness with time. 
+
+
+% playing the sound using the function
+sound_cases = [sustained_response decaying_response growing_response];
+for i =1:3
+    soundsc(sound_cases(1));
+end
+
+%% Part 3-3
+% Redefining RLC parameters and overwriting V_in time series. 
+R = 100;
+L = 100e-3;
+C = 0.1e-6;
+frequencies = decade(1,4,0.5);
+frequency_response = [frequencies' zeros(length(frequencies),1)];
+index = 1;
+for f = frequencies
+    V_in = sin(2*pi*f*t);
+    V_out = simV_R(R,L,C,V_in,t);
+    ratio = norm(V_out)/norm(V_in);
+    frequency_response(index, 2) = ratio;
+    index = index +1;
+end
+
+% Using a frequency vs ratio plot to see circuit response based on input
+% frequency.
+
+figure();
+semilogx(frequency_response(:,1), frequency_response(:,2));
+title('|V_{out}|/|V_{in}| vs frequency of V_{in}');
+ylabel('|V_{out}|/|V_{in}|');
+xlabel('Frequency(Hz)');
+
+%%
+% play sound, how can I find Fs?
+playSound(V_out,1/h);
 
 
 
