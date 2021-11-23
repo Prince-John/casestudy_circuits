@@ -49,12 +49,13 @@ function sound_frequency_response(R,L,C,t,h,f)
     end
     figure();
     hold on;
-    y = 0.707e14*ones(length(frequency_response(:,2)),1);
+    y = max(frequency_response(:,2))*ones(length(frequency_response(:,2)),1);
     plot(frequency_response(:,1), frequency_response(:,2));
     plot(frequency_response(:,1), y);
     title('|V_{out}|/|V_{in}| vs frequency of V_{in}');
     ylabel('|V_{out}|/|V_{in}|');
     xlabel('Frequency(Hz)');
+    legend();
 
 end
 
