@@ -28,7 +28,7 @@ function V_outl1 = low(Vin1,h)
     R = 2*pi*L*bw;
     tf= 5;
     t = linspace(0,tf,((tf)/h) +1);
-    V_outl1 = simV_R(R,L,C,Vin1,t,h);
+    V_outl1 = simV_R(R,L,C,Vin1',t,h);
 end
 function V_outl2 = low2(Vin2,h)
     bw = 4;
@@ -37,7 +37,7 @@ function V_outl2 = low2(Vin2,h)
     R = 2*pi*L*bw;
     tf= 5;
     t = linspace(0,tf,((tf)/h) +1);
-    V_outl2 = simV_R2(R,L,C,Vin2,t,h);
+    V_outl2 = simV_R2(R,L,C,Vin2',t,h);
 end
 
 function V_outh = high(Vin1,h)
@@ -47,7 +47,7 @@ function V_outh = high(Vin1,h)
     R = 2*pi*L*bw;
     tf= 5;
     t = linspace(0,tf,((tf)/h) +1);
-    V_outh = simV_R(R,L,C,Vin1,t,h);
+    V_outh = simV_R(R,L,C,Vin1',t,h);
 end
 function V_outh2 = high2(Vin2,h)
     bw = 5000;
@@ -56,7 +56,7 @@ function V_outh2 = high2(Vin2,h)
     R = 2*pi*L*bw;
     tf= 5;
     t = linspace(0,tf,((tf)/h) +1);
-    V_outh2 = simV_R2(R,L,C,Vin2,t,h);
+    V_outh2 = simV_R2(R,L,C,Vin2',t,h);
 end
 
 function V_R_Out = simV_R(R,L,C,Vin1,t,h)
