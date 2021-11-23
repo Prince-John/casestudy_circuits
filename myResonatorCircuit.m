@@ -34,6 +34,12 @@ function V_out = resonating_circuit(f,V_in,h)
     t = linspace(0,tf,((tf)/h) +1);
     sound_frequency_response(R,L,C,t,h,f)
     V_out = simV_r(R,L,C,V_in,t, h);
+    figure();
+    plot(t,V_out);
+    xlabel("Time (s)");
+    ylabel("Voltage");
+    title("Voltage vs Time of A_4 key");
+    legend();
 end
 
 function sound_frequency_response(R,L,C,t,h,f)

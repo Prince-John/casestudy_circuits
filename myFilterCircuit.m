@@ -16,5 +16,9 @@
 % Vout - time-series vector representing the output voltage of a circuit
 
 function Vout = myFilterCircuit(Vin,h)
-Vout = Vin;
+% Vout = Vin;
+    t = linspace(0,length(Vin),(length(Vin)/h) +1); % find the length of the whole file
+    Vout = fft(Vin);
+    figure();
+    plot(t,Vout);
 end
